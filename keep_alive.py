@@ -2,16 +2,13 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class KeepAliveHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)  # Send HTTP 200 OK response
-        self.send_header('Content-type', 'text/plain')  # Set content type
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(b"I'm alive")  # Write the response body
+        self.wfile.write(b"I'm alive")
 
-def run(server_class=HTTPServer, handler_class=KeepAliveHandler, port=8080):
-    server_address = ('', port)  # Empty string means all interfaces
-    httpd = server_class(server_address, handler_class)
-    print(f'Server running on port {port}...')
+def start_keep_alive():
+    server_address = ('', 8080)
+    httpd = HTTPServer(server_address, KeepAliveHandler)
+    print('Keep alive server running on port 8080...')
     httpd.serve_forever()
-
-if __name__ == '__main__':
-    run()
