@@ -3,10 +3,10 @@ import datetime
 import asyncio
 from telethon.sync import TelegramClient
 from telethon import errors
-import keep_alive
+#import keep_alive
 
 # Start the keep_alive server
-keep_alive.start_keep_alive()
+#keep_alive.start_keep_alive()
 
 class TelegramForwarder:
     def __init__(self, api_id, api_hash, phone_number):
